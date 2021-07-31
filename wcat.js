@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 let fs = require("fs")
-
+let helpObj = require('./help');
 
 let inputArr = process.argv.slice(2);
 //console.log(inputArr);
