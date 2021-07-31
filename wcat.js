@@ -4,7 +4,9 @@ let helpObj = require('./help');
 
 let inputArr = process.argv.slice(2);
 //console.log(inputArr);
-
+if(inputArr[0]=="help"){
+    helpObj.helpkey();
+}
 
 //options ko identify krenge
   let optionsArr =[];
