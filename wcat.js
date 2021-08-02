@@ -21,12 +21,6 @@ if(inputArr[0]=="help"){
     }
 
   }
-// option check
-  if(optionsArr.includes("-b")&&optionsArr.includes("-n")){
-      console.log("Enter Only One between (-n) And (-b)");
-      return;
-  }
-
   // file existance check
 
   for(let i=0;i<filesArr.length;i++){
@@ -72,16 +66,44 @@ if(inputArr[0]=="help"){
   }
  // console.log(contentArr.join("\n"));
 
+ //option check
+ let _nidx =optionsArr.indexOf("-n");
+ let _bidx =optionsArr.indexOf("-b");
+  let finalOption ="";
+     if(_nidx>=0&&_bidx>=0){
+// both index present
+// select final index;
+     if(_nidx<_bidx){
+        finalOption="-n";
+     }else{
+        finalOption="-b";
+     }
+     }else{
+        if(_nidx>-1){
+            finalOption="-n";
+            }else if(_bidx>-1){
+            finalOption="-b";
+         }
+     }
+
+     if(finalOption!=''){
+          if(finalOption=='-n'){
+             modifyByN(contentArr);
+          }else if(finalOption=='-b'){
+            modifyByB(contentArr);
+          }
+     }
+
+  function modifyByN(contentArr){
   let nOption =optionsArr.includes("-n");
   if(nOption){
       for(let i=0;i<contentArr.length;i++){
           contentArr[i]=(i+1)+" "+contentArr[i];
       }
-
   }
+}
  // console.log(contentArr.join("\n"));
-
-
+function modifyByB(contentArr){
  let bOption =optionsArr.includes("-b");
  if(bOption){
      let count =1;
@@ -92,6 +114,7 @@ if(inputArr[0]=="help"){
        }
     }
 
+}
 }
 console.log(contentArr.join("\n"));
 
